@@ -14,9 +14,9 @@
 
   "scripts": {
 
-    "start": "node server.js",
+    "start": "node ../ backend/server.js",
 
-    "dev": "nodemon server.js",
+    "dev": "nodemon ../ backend/server.js",
 
     "seed": "node seed/seed.js"
 
