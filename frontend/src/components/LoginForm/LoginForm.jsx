@@ -29,25 +29,24 @@ const LoginForm = ({ onLogin }) => {
           {error && <p className="login-error">{error}</p>}
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <span className="input-icon">✉</span>
               <input
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+              <span className="input-icon">👤</span>
             </div>
             <div className="input-group">
-              <span className="input-icon">🔒</span>
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <span className="input-icon">🔒</span>
             </div>
             <div className="input-group">
-              <span className="input-icon">👤</span>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
@@ -55,6 +54,7 @@ const LoginForm = ({ onLogin }) => {
                 <option value="manager">Manager</option>
                 <option value="employee">Employee</option>
               </select>
+              <span className="input-icon">⚙️</span>
             </div>
             <button type="submit" className="login-btn">LOGIN</button>
           </form>
