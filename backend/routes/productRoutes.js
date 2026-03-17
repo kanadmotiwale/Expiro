@@ -3,6 +3,7 @@ import productController from '../controllers/productController.js';
 
 const router = Router();
 
+router.post('/sell', productController.sell);
 router.get('/expiring/:days', productController.getExpiring);
 router.get('/', productController.getAll);
 router.get('/:id', productController.getById);

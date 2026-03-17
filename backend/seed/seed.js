@@ -225,11 +225,15 @@ const seed = async () => {
         const products = PRODUCTS.map((p) => {
             const range = EXPIRY_RANGE[p.category] || { min: 7, max: 90 };
             const numBatches = faker.number.int({ min: 2, max: 4 });
-            const batches = Array.from({ length: numBatches }, () => ({
-                quantity: faker.number.int({ min: 10, max: 100 }),
-                expiryDate: randomDate(faker.number.int({ min: range.min, max: range.max })),
-                receivedAt: randomDate(-faker.number.int({ min: 1, max: 14 })),
-            }));
+            const batches = Array.from({ length: numBatches }, () => {
+                const qty = faker.number.int({ min: 10, max: 100 });
+                return {
+                    quantity: qty,
+                    remainingQuantity: qty,
+                    expiryDate: randomDate(faker.number.int({ min: range.min, max: range.max })),
+                    receivedAt: randomDate(-faker.number.int({ min: 1, max: 14 })),
+                };
+            });
 
             return {
                 name: p.name,

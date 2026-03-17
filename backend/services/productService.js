@@ -39,6 +39,11 @@ const deleteProduct = async (id) => {
     return { message: 'Product deleted' };
 };
 
+const sellProduct = async (id, quantitySold) => {
+    if (!quantitySold || quantitySold <= 0) throw new Error('Quantity sold must be greater than 0');
+    return await productModel.sellProduct(id, quantitySold);
+};
+
 export default {
     getAllProducts,
     getProductById,
@@ -46,4 +51,5 @@ export default {
     createProduct,
     updateProduct,
     deleteProduct,
+    sellProduct,
 };

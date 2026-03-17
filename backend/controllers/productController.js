@@ -56,4 +56,14 @@ const remove = async (req, res, next) => {
     }
 };
 
-export default { getAll, getById, getExpiring, create, update, remove };
+const sell = async (req, res, next) => {
+    try {
+        const { productId, quantitySold } = req.body;
+        const result = await productService.sellProduct(productId, parseInt(quantitySold));
+        res.json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
+export default { getAll, getById, getExpiring, create, update, remove, sell };
