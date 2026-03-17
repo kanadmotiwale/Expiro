@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import SellModal from '../SellModal/SellModal.jsx';
+import { sellProduct } from '../../services/productAPI.js';
 import './ExpiryDashboard.css';
 
 const getUrgency = (expiryDate) => {
@@ -15,26 +17,32 @@ const getUrgency = (expiryDate) => {
 };
 
 const URGENCY_CONFIG = {
-  expired: { label: 'Expired',             color: '#dc2626', bg: '#fee2e2', dot: '#dc2626' },
-  today:   { label: 'Expiring Today',      color: '#ea580c', bg: '#ffedd5', dot: '#ea580c' },
-  soon:    { label: 'Expiring in 3 Days',  color: '#ca8a04', bg: '#fef9c3', dot: '#ca8a04' },
+  expired: { label: 'Expired',            color: '#dc2626', bg: '#fee2e2', dot: '#dc2626' },
+  today:   { label: 'Expiring Today',     color: '#ea580c', bg: '#ffedd5', dot: '#ea580c' },
+  soon:    { label: 'Expiring in 3 Days', color: '#ca8a04', bg: '#fef9c3', dot: '#ca8a04' },
 };
 
-const ExpiryDashboard = ({ products, loading, user }) => {
+const ExpiryDashboard = ({ products, loading, user, onProductsUpdate }) => {
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('all');
   const [search, setSearch] = useState('');
+  const [sellTarget, setSellTarget] = useState(null);
+  const [sellError, setSellError] = useState('');
 
   useEffect(() => {
     const flat = products.flatMap((p) =>
-      (p.batches || []).map((b) => ({
-        productName: p.name,
-        category: p.category,
-        shelfLocation: p.shelfLocation,
-        quantity: b.quantity,
-        expiryDate: b.expiryDate,
-        urgency: getUrgency(b.expiryDate),
-      }))
+      (p.batches || [])
+        .filter((b) => (b.remainingQuantity || 0) > 0)
+        .map((b) => ({
+          productId: p._id,
+          productName: p.name,
+          category: p.category,
+          shelfLocation: p.shelfLocation,
+          quantity: b.remainingQuantity,
+          expiryDate: b.expiryDate,
+          urgency: getUrgency(b.expiryDate),
+          batches: p.batches,
+        }))
     ).filter((b) => b.urgency !== 'ok')
      .sort((a, b) => {
        const order = { expired: 0, today: 1, soon: 2 };
@@ -56,6 +64,17 @@ const ExpiryDashboard = ({ products, loading, user }) => {
     return matchFilter && matchSearch;
   });
 
+  const handleSellConfirm = async (qty) => {
+    try {
+      await sellProduct(sellTarget.productId, qty);
+      setSellTarget(null);
+      setSellError('');
+      onProductsUpdate();
+    } catch (err) {
+      setSellError(err.message);
+    }
+  };
+
   const today = new Date().toLocaleDateString('en-US', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   });
@@ -71,7 +90,6 @@ const ExpiryDashboard = ({ products, loading, user }) => {
 
   return (
     <div className="expiry-dashboard">
-
       {/* Welcome Banner */}
       <div className="expiry-banner">
         <div>
@@ -120,6 +138,8 @@ const ExpiryDashboard = ({ products, loading, user }) => {
         </select>
       </div>
 
+      {sellError && <p className="sell-error-banner">{sellError}</p>}
+
       {/* Table */}
       {filtered.length === 0 ? (
         <div className="no-expiry">🎉 No expiring products match your filter!</div>
@@ -131,8 +151,9 @@ const ExpiryDashboard = ({ products, loading, user }) => {
               <th>Product</th>
               <th>Category</th>
               <th>Shelf</th>
-              <th>Qty</th>
+              <th>Remaining Qty</th>
               <th>Expiry Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -151,11 +172,27 @@ const ExpiryDashboard = ({ products, loading, user }) => {
                   <td>{b.shelfLocation}</td>
                   <td>{b.quantity}</td>
                   <td>{new Date(b.expiryDate).toLocaleDateString()}</td>
+                  <td>
+                    <button
+                      className="btn-sell"
+                      onClick={() => setSellTarget(b)}
+                    >
+                      Log Sale
+                    </button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+      )}
+
+      {sellTarget && (
+        <SellModal
+          product={sellTarget}
+          onConfirm={handleSellConfirm}
+          onCancel={() => { setSellTarget(null); setSellError(''); }}
+        />
       )}
     </div>
   );
@@ -167,12 +204,7 @@ ExpiryDashboard.propTypes = {
       name: PropTypes.string.isRequired,
       category: PropTypes.string.isRequired,
       shelfLocation: PropTypes.string.isRequired,
-      batches: PropTypes.arrayOf(
-        PropTypes.shape({
-          quantity: PropTypes.number.isRequired,
-          expiryDate: PropTypes.string.isRequired,
-        })
-      ),
+      batches: PropTypes.array,
     })
   ).isRequired,
   loading: PropTypes.bool.isRequired,
@@ -180,6 +212,7 @@ ExpiryDashboard.propTypes = {
     username: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
   }).isRequired,
+  onProductsUpdate: PropTypes.func.isRequired,
 };
 
 export default ExpiryDashboard;
