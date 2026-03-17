@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './WasteSummary.css';
 
 const WasteSummary = ({ reports, loading }) => {
+  const [search, setSearch] = useState('');
+
   if (loading) return <p className="loading">Loading summary...</p>;
 
   const summary = reports.reduce((acc, r) => {
@@ -12,13 +15,28 @@ const WasteSummary = ({ reports, loading }) => {
     return acc;
   }, {});
 
-  const sorted = Object.values(summary).sort((a, b) => b.totalRemoved - a.totalRemoved);
+  const sorted = Object.values(summary)
+    .sort((a, b) => b.totalRemoved - a.totalRemoved)
+    .filter((s) => s.productName.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <div className="waste-summary">
-      <h2>Waste Summary</h2>
+      <div className="waste-summary-header">
+        <div>
+          <h2>Waste Summary</h2>
+          <p className="subtext">{sorted.length} products — sorted by highest waste</p>
+        </div>
+      </div>
+      <div className="waste-summary-filters">
+        <input
+          type="text"
+          placeholder="Search by product name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       {sorted.length === 0 ? (
-        <p className="no-data">No waste data available.</p>
+        <p className="no-data">No results found.</p>
       ) : (
         <table className="summary-table">
           <thead>
