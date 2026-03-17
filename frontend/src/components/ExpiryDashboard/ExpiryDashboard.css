@@ -1,40 +1,188 @@
 .expiry-dashboard {
-    padding: 1.5rem;
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 100%;
 }
 
-.expiry-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+/* Welcome Banner */
+.expiry-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #1b4332, #2d6a4f);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
 }
 
-.expiry-header h2 {
-    font-size: 1.5rem;
-    color: #2d6a4f;
+.expiry-banner h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
-.expiry-header select {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.9rem;
+.expiry-banner p {
+  font-size: 0.85rem;
+  opacity: 0.75;
 }
 
+.banner-alert {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Summary Cards */
+.expiry-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.summary-card.expired { background: #fee2e2; border-color: #fca5a5; }
+.summary-card.today   { background: #ffedd5; border-color: #fdba74; }
+.summary-card.soon    { background: #fef9c3; border-color: #fde047; }
+
+.summary-count {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #0f172a;
+}
+
+.summary-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.summary-hint {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+/* Filters */
+.expiry-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.expiry-filters input {
+  flex: 1;
+  max-width: 360px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.expiry-filters input:focus {
+  border-color: #2d6a4f;
+}
+
+.expiry-filters select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Table */
 .expiry-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-}
-
-.expiry-table th,
-.expiry-table td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .expiry-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.expiry-table td {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  color: #334155;
+}
+
+.expiry-table tr:last-child td { border-bottom: none; }
+
+.bold { font-weight: 600; color: #0f172a; }
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.no-expiry {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+  font-size: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.loading {
+  color: #94a3b8;
+  padding: 2rem 0;
+}.expiry-table th {
     background-color: #f4f6f8;
     font-weight: 600;
     color: #333;
