@@ -179,46 +179,26 @@
   border: 1px solid #e2e8f0;
 }
 
-.loading {
-  color: #94a3b8;
-  padding: 2rem 0;
-}.expiry-table th {
-    background-color: #f4f6f8;
-    font-weight: 600;
-    color: #333;
+.btn-sell {
+  padding: 0.35rem 0.8rem;
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s;
 }
 
-.row-expired {
-    background-color: #fff0f0;
-}
+.btn-sell:hover { background: #dbeafe; }
 
-.row-expired:hover {
-    background-color: #ffe0e0;
-}
-
-.row-today {
-    background-color: #fff4e5;
-}
-
-.row-today:hover {
-    background-color: #ffe8cc;
-}
-
-.row-soon {
-    background-color: #fffde7;
-}
-
-.row-soon:hover {
-    background-color: #fff9c4;
-}
-
-.no-expiry {
-    color: #2d6a4f;
-    font-size: 1rem;
-    padding: 1rem 0;
-}
-
-.loading {
-    color: #666;
-    padding: 1rem 0;
+.sell-error-banner {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
 }
