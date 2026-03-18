@@ -6,6 +6,7 @@ import ExpiryDashboard from '../ExpiryDashboard/ExpiryDashboard.jsx';
 import WasteReportList from '../WasteReportList/WasteReportList.jsx';
 import WasteReportForm from '../WasteReportForm/WasteReportForm.jsx';
 import WasteSummary from '../WasteSummary/WasteSummary.jsx';
+import ProductLookup from '../ProductLookup/ProductLookup.jsx';
 import useProducts from '../../hooks/useProducts.js';
 import useWasteReports from '../../hooks/useWasteReports.js';
 import './Dashboard.css';
@@ -31,13 +32,26 @@ const Dashboard = ({ user, onLogout }) => {
     };
 
     const handleWasteSubmit = async (data) => {
-        if (editingReport) {
+        if (editingReport && editingReport._id) {
             await editReport(editingReport._id, data);
         } else {
             await addReport(data);
         }
         setShowWasteForm(false);
         setEditingReport(null);
+    };
+
+    const handleLogWasteFromExpiry = (item) => {
+        setEditingReport({
+            productId: item.productId,
+            productName: item.productName,
+            quantityRemoved: item.quantity,
+            reason: 'expired',
+            reportedBy: user.username,
+            notes: '',
+        });
+        setShowWasteForm(true);
+        setActiveTab('waste');
     };
 
     const managerTabs = [
@@ -49,6 +63,7 @@ const Dashboard = ({ user, onLogout }) => {
 
     const employeeTabs = [
         { key: 'expiry', label: 'Expiry Dashboard' },
+        { key: 'lookup', label: 'Product Lookup' },
         { key: 'waste', label: 'Waste Reports' },
     ];
 
@@ -87,7 +102,16 @@ const Dashboard = ({ user, onLogout }) => {
                     />
                 )}
                 {activeTab === 'expiry' && (
-                    <ExpiryDashboard products={products} loading={pLoading} user={user} onProductsUpdate={fetchProducts} />
+                    <ExpiryDashboard
+                        products={products}
+                        loading={pLoading}
+                        user={user}
+                        onProductsUpdate={fetchProducts}
+                        onLogWaste={handleLogWasteFromExpiry}
+                    />
+                )}
+                {activeTab === 'lookup' && (
+                    <ProductLookup products={products} loading={pLoading} />
                 )}
                 {activeTab === 'waste' && (
                     <WasteReportList
