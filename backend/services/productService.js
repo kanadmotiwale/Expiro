@@ -28,7 +28,8 @@ const createProduct = async ({ name, category, shelfLocation, stockCount, batche
 };
 
 const updateProduct = async (id, updates) => {
-    const result = await productModel.updateOne(id, updates);
+    const { _id, ...safeUpdates } = updates;
+    const result = await productModel.updateOne(id, safeUpdates);
     if (result.matchedCount === 0) throw new Error('Product not found');
     return { message: 'Product updated' };
 };
