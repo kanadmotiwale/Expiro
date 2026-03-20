@@ -13,9 +13,13 @@ The app is role-based. Managers and employees see different views and have diffe
 
 ---
 
-## Screenshot
+## Screenshots
 
-*(will have to add screenshots once done with our code)*
+### Manager Dashboard
+![Manager Dashboard](./Screenshots/WD%20Expiro%20Thumbnail%201.png)
+
+### Employee View
+![Employee View](./Screenshots/WD%20Expiro%20Thumbnail%202.png)
 
 ---
 
