@@ -15,7 +15,7 @@ The app is role-based. Managers and employees see different views and have diffe
 
 ## Screenshot
 
-*(Add after deployment)*
+*(will have to add screenshots once done with our code)*
 
 ---
 
