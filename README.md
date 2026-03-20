@@ -15,7 +15,10 @@ The app is role-based. Managers and employees see different views and have diffe
 
 ## Screenshot
 
-*(will have to add screenshots once done with our code)*
+*## Screenshots
+
+![Expiro Dashboard](./screenshots/WD%20Expiro%20Thumbnail%201.png)
+![Expiro Waste Reports](./screenshots/WD%20Expiro%20Thumbnail%202.png)*
 
 ---
 
