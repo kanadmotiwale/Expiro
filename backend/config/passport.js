@@ -1,8 +1,7 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcryptjs';
-import userModel from './db.js';
-import { getDB } from './db.js';
+import { getDB } from './config/db.js';
 
 const initPassport = () => {
     passport.use(
