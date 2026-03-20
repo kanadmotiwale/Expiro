@@ -10,7 +10,6 @@
     overflow: hidden;
 }
 
-/* Background gradient bubbles */
 .login-page::before {
     content: '';
     position: absolute;
@@ -33,7 +32,6 @@
     border-radius: 50%;
 }
 
-/* Extra bubble middle right */
 .bubble {
     position: absolute;
     width: 400px;
@@ -193,8 +191,7 @@
     overflow: hidden;
 }
 
-.login-right::before {
-    content: '';
+.login-right-decoration {
     position: absolute;
     width: 220px;
     height: 220px;
@@ -212,7 +209,7 @@
 }
 
 .login-form-wrap h2 {
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
     color: #1b4332;
     margin-bottom: 0.3rem;
@@ -221,7 +218,36 @@
 .login-sub {
     font-size: 0.85rem;
     color: #94a3b8;
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Auth Toggle */
+.auth-toggle {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 3px;
+    margin-bottom: 1.25rem;
+    gap: 3px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: #64748b;
+    transition: all 0.2s;
+}
+
+.toggle-btn.active {
+    background: #fff;
+    color: #1b4332;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
 /* Inputs */
@@ -234,7 +260,7 @@
     color: #1e293b;
     background: #f8fafb;
     outline: none;
-    margin-bottom: 1.1rem;
+    margin-bottom: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
@@ -258,7 +284,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     cursor: pointer;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     transition: all 0.25s;
 }
 
@@ -266,6 +292,12 @@
     background: linear-gradient(135deg, #2d6a4f, #3d9970);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(27,67,50,0.3);
+}
+
+.login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .login-error {

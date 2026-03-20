@@ -14,6 +14,20 @@ export const login = async (username, password) => {
     return res.json();
 };
 
+export const register = async (username, password) => {
+    const res = await fetch(`${BASE_URL}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ username, password }),
+    });
+    if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || 'Registration failed');
+    }
+    return res.json();
+};
+
 export const logout = async () => {
     const res = await fetch(`${BASE_URL}/logout`, {
         method: 'POST',
@@ -24,9 +38,7 @@ export const logout = async () => {
 };
 
 export const getMe = async () => {
-    const res = await fetch(`${BASE_URL}/me`, {
-        credentials: 'include',
-    });
+    const res = await fetch(`${BASE_URL}/me`, { credentials: 'include' });
     if (!res.ok) return null;
     return res.json();
 };
