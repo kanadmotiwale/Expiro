@@ -1,81 +1,95 @@
-# Expiro — Store Inventory & Expiry Tracker
+# Expiro
 
-## Authors
-- **Aarya Patil** — Products, Expiry Dashboard, Middleware
-- **Kanad Motiwale** — Waste Reports, Waste Summary, Server
+**Authors:** Aarya Patil & Kanad Motiwale
+**Class:** [CS5610 Web Development — Northeastern University](#)
 
-## Class Link
-[CS5610 Web Development — Northeastern University](https://johnguerra.co/classes/webDevelopment_fall_2024/)
+---
 
-## Project Objective
-Expiro is a full-stack, role-based inventory and expiry management app for grocery stores. Managers log incoming stock batches with expiry dates and monitor shelf health via a color-coded dashboard. Employees see a daily pull list of expiring products and log waste reports when items are removed. The app helps reduce waste, prevent expired products from reaching customers, and track stock levels in real time.
+## What is this?
+
+Expiro is a store inventory and expiry tracker built for grocery store staff. Managers can monitor stock health, track expiring products, and review waste over time. Employees get a daily view of what needs to come off the shelf and can log waste reports on the spot.
+
+The app is role-based — managers and employees see different views and have different permissions.
+
+---
 
 ## Screenshot
-> *(Add screenshot after deployment)*
+
+*(Add after deployment)*
 
 ---
 
 ## Tech Stack
 
-| Layer      | Technology                                |
-|------------|-------------------------------------------|
-| Frontend   | React 18 with Hooks, Vite                 |
-| Backend    | Node.js, Express                          |
-| Database   | MongoDB Atlas (native driver)             |
-| Deployment | Render (backend), GitHub Pages (frontend) |
+- **Frontend:** React 18 with Hooks, Vite
+- **Backend:** Node.js, Express
+- **Database:** MongoDB Atlas (native driver — no Mongoose)
+- **Auth:** Passport.js (local strategy)
+- **Deployment:** Render (backend), Vercel (frontend)
 
 ---
 
-## Instructions to Build
+## Getting Started
 
 ### Prerequisites
+
 - Node.js v18+
-- MongoDB Atlas account
+- A MongoDB Atlas account
 
 ### 1. Clone the repo
+
 ```bash
 git clone https://github.com/kanadmotiwale/Expiro.git
 cd Expiro
 ```
 
-### 2. Backend Setup
+### 2. Set up the backend
+
 ```bash
 cd backend
 npm install
 ```
 
 Create a `.env` file inside `backend/`:
-```env
+
+```
 MONGO_URI=mongodb+srv://<username>:<password>@expiro.mongodb.net/expiro
 PORT=5001
+SESSION_SECRET=your_secret_here
 ```
 
 Start the backend:
+
 ```bash
 npm run dev
 ```
 
-### 3. Frontend Setup
+### 3. Set up the frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-### 4. Seed the Database
+### 4. Seed the database
+
 ```bash
 cd backend
 npm run seed
 ```
+
 This populates the database with 1,000+ synthetic product records across 13 grocery categories.
 
 ---
 
-## Deployment
-- **Frontend:** [GitHub Pages URL here]
-- **Backend:** [Render URL here]
+## Live Demo
+
+- **Frontend:** [Add Vercel URL here]
+- **Backend:** [Add Render URL here]
 
 ---
 
 ## License
-[MIT](./LICENSE)
+
+MIT
