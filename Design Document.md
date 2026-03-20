@@ -75,25 +75,47 @@ Jay realises he logged 30 units instead of 13 on a waste report. He goes to Wast
 
 ## Design Mockups
 
-The app has six main screens. Wireframes for each are included below.
+The app has six main screens. Wireframe mockups for each are shown below.
 
-**Screen 1 — Login page**
+### Screen 1 — Login Page
 A simple login form with username and password fields. No role selector — the role is determined server-side based on the credentials.
 
-**Screen 2 — Expiry Dashboard**
+![Mockup 1 - Login Page](./Screenshots/mockup1.png)
+
+---
+
+### Screen 2 — Expiry Dashboard
 The main screen for both roles. Shows three summary cards at the top (expired, expiring today, expiring in 3 days) followed by a filterable and searchable table. Each row shows the product name, category, shelf location, quantity, time left, waste risk level, and action buttons.
 
-**Screen 3 — Expiry table rows**
-Rows are color coded by urgency. Red background for expired items, orange for expiring today, yellow for items expiring within 3 days. Each row has a "Log Sale" and a "Waste" button.
+![Mockup 2 - Expiry Dashboard](./Screenshots/mockup2.png)
 
-**Screen 4 — Product Lookup**
+---
+
+### Screen 3 — Product Lookup
 A grid of category cards. Each card shows a category icon, name, and product count. There is also a search bar at the top for finding products by name or shelf location.
 
-**Screen 5 — Waste Reports**
+![Mockup 3 - Product Lookup](./Screenshots/mockup3.png)
+
+---
+
+### Screen 4 — Waste Reports
 A table of all logged waste entries sorted by most recent. Each row shows the product, quantity removed, reason, who reported it, and the date. Employees can edit or delete their own entries. Managers can edit or delete any entry.
 
-**Screen 6 — Log Waste and Edit Waste modals**
-A modal form that opens over the current page. For logging new waste it starts blank. For editing an existing entry the fields are pre-filled with the current data. Fields include product, quantity removed, reason, reported by, and optional notes.
+![Mockup 4 - Waste Reports](./Screenshots/mockup4.png)
+
+---
+
+### Screen 5 — Log Waste Modal
+A modal form that opens over the current page. Fields start blank. Includes product dropdown, quantity, reason, reported by, and optional notes.
+
+![Mockup 5 - Log Waste Modal](./Screenshots/mockup5.png)
+
+---
+
+### Screen 6 — Edit Waste Modal
+Same form as the Log Waste modal but all fields are pre-filled with the existing entry data. The submit button changes to "Update".
+
+![Mockup 6 - Edit Waste Modal](./Screenshots/mockup5.png)
 
 ---
 
