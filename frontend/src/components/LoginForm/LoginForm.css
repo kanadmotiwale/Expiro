@@ -262,6 +262,7 @@
     outline: none;
     margin-bottom: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    box-sizing: border-box;
 }
 
 .login-input::placeholder { color: #b0bec5; }
@@ -317,6 +318,12 @@
 
 @media (max-width: 480px) {
     .login-page { padding: 1rem; }
-    .login-left { display: none; }
-    .login-right { border-radius: 20px; }
+    .login-left {
+        display: flex;
+        padding: 1.5rem 1.25rem;
+    }
+    .login-brand { margin-bottom: 1.25rem; }
+    .login-left-content h2 { font-size: 1.5rem; }
+    .login-left-content > p { margin-bottom: 1rem; }
+    .login-right { border-radius: 0 0 20px 20px; }
 }
