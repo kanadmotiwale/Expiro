@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LoginForm from './components/LoginForm/LoginForm.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
-import { logout } from './services/authAPI.js';
+import { logout, getMe } from './services/authAPI.js';
 import './App.css';
 
 function App() {
     const [user, setUser] = useState(null);
+    const [checking, setChecking] = useState(true);
+
+    useEffect(() => {
+        getMe()
+            .then((userData) => {
+                if (userData) setUser(userData);
+            })
+            .finally(() => setChecking(false));
+    }, []);
 
     const handleLogin = (userData) => {
         setUser(userData);
@@ -19,6 +28,8 @@ function App() {
         }
         setUser(null);
     };
+
+    if (checking) return null;
 
     return (
         <div className="app">
