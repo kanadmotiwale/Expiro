@@ -9,7 +9,7 @@
 
 Expiro is a store inventory and expiry tracker built for grocery store staff. Managers can monitor stock health, track expiring products, and review waste over time. Employees get a daily view of what needs to come off the shelf and can log waste reports on the spot.
 
-The app is role-based — managers and employees see different views and have different permissions.
+The app is role-based. Managers and employees see different views and have different permissions.
 
 ---
 
@@ -23,7 +23,7 @@ The app is role-based — managers and employees see different views and have di
 
 - **Frontend:** React 18 with Hooks, Vite
 - **Backend:** Node.js, Express
-- **Database:** MongoDB Atlas (native driver — no Mongoose)
+- **Database:** MongoDB Atlas (native driver, no Mongoose)
 - **Auth:** Passport.js (local strategy)
 - **Deployment:** Render (backend), Vercel (frontend)
 
@@ -85,8 +85,7 @@ This populates the database with 1,000+ synthetic product records across 13 groc
 
 ## Live Demo
 
-- **Frontend:** [Add Vercel URL here]
-- **Backend:** [Add Render URL here]
+[https://expiro-three.vercel.app/](https://expiro-three.vercel.app/)
 
 ---
 
