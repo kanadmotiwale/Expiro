@@ -69,7 +69,7 @@ cd backend
 npm run seed
 ```
 
-This populates the database with 1,000+ synthetic product records across 13 grocery categories.
+This populates the database with 1,000+ synthetic product records across 13 grocery categories
 
 ---
 
