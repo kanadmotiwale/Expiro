@@ -68,7 +68,7 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <div className="login-page">
+    <main className="login-page">
       <div className="bubble" aria-hidden="true" />
       <div className="login-card">
         {/* Left green panel */}
@@ -248,7 +248,7 @@ const LoginForm = ({ onLogin }) => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
