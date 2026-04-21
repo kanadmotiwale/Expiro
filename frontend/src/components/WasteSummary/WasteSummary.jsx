@@ -17,9 +17,7 @@ const WasteSummary = ({ reports, loading }) => {
 
   const sorted = Object.values(summary)
     .sort((a, b) => b.totalRemoved - a.totalRemoved)
-    .filter((s) =>
-      s.productName.toLowerCase().includes(search.toLowerCase())
-    );
+    .filter((s) => s.productName.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <div className="waste-summary">

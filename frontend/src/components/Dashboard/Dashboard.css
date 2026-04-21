@@ -56,7 +56,9 @@
   font-weight: 600;
   font-size: 0.875rem;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
   letter-spacing: 0.3px;
 }
 
@@ -95,7 +97,9 @@
   white-space: nowrap;
   flex-shrink: 0;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
   letter-spacing: 0.2px;
 }
 

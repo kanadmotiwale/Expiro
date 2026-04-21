@@ -89,7 +89,6 @@ const WasteReportForm = ({ onSubmit, onCancel, initial, products }) => {
           {initial ? 'Edit Waste Report' : 'Log Waste Report'}
         </h2>
         <form onSubmit={handleSubmit} noValidate>
-
           <div className="form-group">
             <label htmlFor="waste-product">Product</label>
             <select
@@ -166,7 +165,6 @@ const WasteReportForm = ({ onSubmit, onCancel, initial, products }) => {
               {initial ? 'Update' : 'Submit'}
             </button>
           </div>
-
         </form>
       </div>
     </div>

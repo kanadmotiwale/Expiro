@@ -55,7 +55,10 @@
   font-size: 0.95rem;
   color: #1e293b;
   background: #f9fafb;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
   outline: none;
   font-family: 'Inter', sans-serif;
 }
@@ -210,7 +213,9 @@
   font-size: 0.9rem;
   font-weight: 700;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  transition: background-color 0.2s, transform 0.15s;
+  transition:
+    background-color 0.2s,
+    transform 0.15s;
 }
 
 .btn-submit:hover {

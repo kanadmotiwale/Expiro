@@ -117,7 +117,6 @@ const ProductForm = ({ onSubmit, onCancel, initial }) => {
           {initial ? 'Edit Product' : 'Add Product'}
         </h2>
         <form onSubmit={handleSubmit} noValidate>
-
           <div className="form-group">
             <label htmlFor="product-name">Name</label>
             <input
@@ -234,7 +233,6 @@ const ProductForm = ({ onSubmit, onCancel, initial }) => {
               {initial ? 'Update' : 'Add'}
             </button>
           </div>
-
         </form>
       </div>
     </div>

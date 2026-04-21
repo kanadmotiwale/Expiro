@@ -99,11 +99,7 @@ const SellModal = ({ product, onConfirm, onCancel }) => {
             />
           </div>
           <div className="sell-actions">
-            <button
-              type="button"
-              onClick={onCancel}
-              className="btn-cancel"
-            >
+            <button type="button" onClick={onCancel} className="btn-cancel">
               Cancel
             </button>
             <button type="submit" className="btn-confirm">

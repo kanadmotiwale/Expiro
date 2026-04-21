@@ -71,17 +71,22 @@ const LoginForm = ({ onLogin }) => {
     <div className="login-page">
       <div className="bubble" aria-hidden="true" />
       <div className="login-card">
-
         {/* Left green panel */}
         <div className="login-left">
           <div className="login-left-content">
             <div className="login-brand">
-              <div className="brand-dot" aria-hidden="true">E</div>
+              <div className="brand-dot" aria-hidden="true">
+                E
+              </div>
               <h1>Expiro</h1>
             </div>
             <h2>Welcome</h2>
             <p>Select your role to get started.</p>
-            <div className="role-selector" role="group" aria-label="Select your role">
+            <div
+              className="role-selector"
+              role="group"
+              aria-label="Select your role"
+            >
               <button
                 type="button"
                 className={`role-card ${role === 'manager' ? 'active' : ''}`}
@@ -123,22 +128,35 @@ const LoginForm = ({ onLogin }) => {
 
             {role === 'manager' && mode === 'signin' && (
               <div className="login-hint">
-                <p>Please use your assigned manager credentials to log in. Contact your system administrator if you need access.</p>
+                <p>
+                  Please use your assigned manager credentials to log in.
+                  Contact your system administrator if you need access.
+                </p>
               </div>
             )}
 
             {role === 'employee' && mode === 'signin' && (
               <div className="login-hint">
-                <p>Don't have an account? Switch to <strong>Sign Up</strong> to register.</p>
+                <p>
+                  Don't have an account? Switch to <strong>Sign Up</strong> to
+                  register.
+                </p>
               </div>
             )}
 
             {/* Sign In / Sign Up toggle — employees only */}
             {role === 'employee' && (
-              <div className="auth-toggle" role="group" aria-label="Authentication mode">
+              <div
+                className="auth-toggle"
+                role="group"
+                aria-label="Authentication mode"
+              >
                 <button
                   className={`toggle-btn ${mode === 'signin' ? 'active' : ''}`}
-                  onClick={() => { setMode('signin'); setError(''); }}
+                  onClick={() => {
+                    setMode('signin');
+                    setError('');
+                  }}
                   type="button"
                   aria-pressed={mode === 'signin'}
                 >
@@ -146,7 +164,10 @@ const LoginForm = ({ onLogin }) => {
                 </button>
                 <button
                   className={`toggle-btn ${mode === 'signup' ? 'active' : ''}`}
-                  onClick={() => { setMode('signup'); setError(''); }}
+                  onClick={() => {
+                    setMode('signup');
+                    setError('');
+                  }}
                   type="button"
                   aria-pressed={mode === 'signup'}
                 >
@@ -163,7 +184,9 @@ const LoginForm = ({ onLogin }) => {
 
             <form onSubmit={handleSubmit} noValidate>
               <div className="login-field">
-                <label htmlFor="username" className="sr-only">Username</label>
+                <label htmlFor="username" className="sr-only">
+                  Username
+                </label>
                 <input
                   id="username"
                   className="login-input"
@@ -176,7 +199,9 @@ const LoginForm = ({ onLogin }) => {
                 />
               </div>
               <div className="login-field">
-                <label htmlFor="password" className="sr-only">Password</label>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
                 <input
                   id="password"
                   className="login-input"
@@ -184,13 +209,17 @@ const LoginForm = ({ onLogin }) => {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
+                  autoComplete={
+                    mode === 'signup' ? 'new-password' : 'current-password'
+                  }
                   required
                 />
               </div>
               {mode === 'signup' && role === 'employee' && (
                 <div className="login-field">
-                  <label htmlFor="confirmPassword" className="sr-only">Confirm Password</label>
+                  <label htmlFor="confirmPassword" className="sr-only">
+                    Confirm Password
+                  </label>
                   <input
                     id="confirmPassword"
                     className="login-input"
@@ -218,7 +247,6 @@ const LoginForm = ({ onLogin }) => {
             </form>
           </div>
         </div>
-
       </div>
     </div>
   );

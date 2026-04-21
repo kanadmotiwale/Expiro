@@ -149,15 +149,11 @@ const ProductLookup = ({ products, loading }) => {
       ) : filtered.length === 0 ? (
         <div className="lookup-empty" role="status">
           <p>
-            No products found for{' '}
-            <strong>{search || selectedCategory}</strong>
+            No products found for <strong>{search || selectedCategory}</strong>
           </p>
         </div>
       ) : (
-        <table
-          className="lookup-table"
-          aria-label="Product lookup results"
-        >
+        <table className="lookup-table" aria-label="Product lookup results">
           <thead>
             <tr>
               <th scope="col">Product</th>

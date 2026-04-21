@@ -185,7 +185,11 @@ const ExpiryDashboard = ({
               border: `1px solid ${cfg.color}40`,
             }}
           >
-            <span className="status-dot" style={{ background: cfg.dot }} aria-hidden="true" />
+            <span
+              className="status-dot"
+              style={{ background: cfg.dot }}
+              aria-hidden="true"
+            />
             {cfg.label}
           </span>
         </td>
@@ -235,7 +239,6 @@ const ExpiryDashboard = ({
 
   return (
     <div className="expiry-dashboard">
-
       {/* Welcome Banner */}
       <div className="expiry-banner">
         <div>
@@ -252,8 +255,8 @@ const ExpiryDashboard = ({
             onClick={() => setFilter('expired')}
             aria-label={`${counts.expired + counts.today} items need attention, click to view critical items`}
           >
-            <span aria-hidden="true">⚠️</span>
-            {' '}{counts.expired + counts.today} items need attention → View Critical
+            <span aria-hidden="true">⚠️</span> {counts.expired + counts.today}{' '}
+            items need attention → View Critical
           </button>
         )}
       </div>
@@ -294,7 +297,9 @@ const ExpiryDashboard = ({
 
       {/* Filters */}
       <div className="expiry-filters">
-        <label htmlFor="expiry-search" className="sr-only">Search products</label>
+        <label htmlFor="expiry-search" className="sr-only">
+          Search products
+        </label>
         <input
           id="expiry-search"
           type="text"
@@ -302,7 +307,9 @@ const ExpiryDashboard = ({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <label htmlFor="expiry-filter" className="sr-only">Filter by status</label>
+        <label htmlFor="expiry-filter" className="sr-only">
+          Filter by status
+        </label>
         <select
           id="expiry-filter"
           value={filter}
@@ -313,7 +320,9 @@ const ExpiryDashboard = ({
           <option value="today">Expiring Today</option>
           <option value="soon">Expiring in 3 Days</option>
         </select>
-        <label htmlFor="category-filter" className="sr-only">Filter by category</label>
+        <label htmlFor="category-filter" className="sr-only">
+          Filter by category
+        </label>
         <select
           id="category-filter"
           value={categoryFilter}
@@ -321,10 +330,14 @@ const ExpiryDashboard = ({
         >
           <option value="">All Categories</option>
           {categories.map((c) => (
-            <option key={c} value={c}>{c}</option>
+            <option key={c} value={c}>
+              {c}
+            </option>
           ))}
         </select>
-        <label htmlFor="risk-filter" className="sr-only">Filter by risk level</label>
+        <label htmlFor="risk-filter" className="sr-only">
+          Filter by risk level
+        </label>
         <select
           id="risk-filter"
           value={riskFilter}
@@ -347,13 +360,16 @@ const ExpiryDashboard = ({
       </div>
 
       {sellError && (
-        <p className="sell-error-banner" role="alert">{sellError}</p>
+        <p className="sell-error-banner" role="alert">
+          {sellError}
+        </p>
       )}
 
       {/* Table */}
       {filtered.length === 0 ? (
         <div className="no-expiry" role="status">
-          <span aria-hidden="true">🎉</span> No expiring products match your filter!
+          <span aria-hidden="true">🎉</span> No expiring products match your
+          filter!
         </div>
       ) : (
         <table className="expiry-table" aria-label="Products expiring soon">
@@ -376,7 +392,9 @@ const ExpiryDashboard = ({
                   <>
                     <tr key={`group-${name}`} className="group-header-row">
                       <td colSpan={9}>
-                        <span className="group-label" aria-hidden="true">📦</span>
+                        <span className="group-label" aria-hidden="true">
+                          📦
+                        </span>
                         <span className="group-label"> {name}</span>
                         <span className="group-meta">
                           {batches.length} batch{batches.length > 1 ? 'es' : ''}{' '}
